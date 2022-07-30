@@ -30,7 +30,7 @@ django-stdimage==5.3.0 # http://johannes.maron.family/django-stdimage/
 django-countries-plus==2.0.0
 django-parler==2.3
 django-rosetta==0.9.8
-loguru==0.5.3
+loguru==0.6.0
 
 django-autoslug==1.9.8
 django-crontab==0.7.1
