@@ -44,5 +44,5 @@ crispy-tailwind==0.5.0
 django-mathfilters==1.0.0
 
 django-tinymce==3.4.0
-django-filebrowser-no-grappelli==4.0.0 #https://github.com/smacker/django-filebrowser-no-grappelli
+django-filebrowser-no-grappelli==4.0.1 #https://github.com/smacker/django-filebrowser-no-grappelli
 django-google-translate==1.1  #https://pypi.org/project/django-google-translate/
