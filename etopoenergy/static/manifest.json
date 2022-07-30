@@ -1,50 +1,50 @@
 {
-  "app.css": "http://localhost:9091/css/app.css",
-  "app.js": "http://localhost:9091/js/app.js",
-  "app2.js": "http://localhost:9091/js/app2.js",
-  "css/vendors-node_modules_alpinejs_dist_module_esm_js-node_modules_htmx_org_dist_htmx_js-node_modu-13e420.css": "http://localhost:9091/css/vendors-node_modules_alpinejs_dist_module_esm_js-node_modules_htmx_org_dist_htmx_js-node_modu-13e420.css",
+  "app.css": "/static/css/app.75a380e414cfcc8004f7.css",
+  "app.js": "/static/js/app.c26d0606.js",
+  "app2.js": "/static/js/app2.e326932e.js",
+  "css/app.75a380e414cfcc8004f7.css.map": "/static/css/app.75a380e414cfcc8004f7.css.map",
   "entrypoints": {
     "app": {
       "assets": {
         "js": [
-          "http://localhost:9091/js/runtime.js",
-          "http://localhost:9091/js/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_0_0_0_0_port_-0bf9f2.js",
-          "http://localhost:9091/js/vendors-node_modules_alpinejs_dist_module_esm_js-node_modules_htmx_org_dist_htmx_js-node_modu-13e420.js",
-          "http://localhost:9091/js/app.js"
+          "/static/js/runtime.dd020376.js",
+          "/static/js/259.205647a0.js",
+          "/static/js/app.c26d0606.js"
         ],
         "css": [
-          "http://localhost:9091/css/vendors-node_modules_alpinejs_dist_module_esm_js-node_modules_htmx_org_dist_htmx_js-node_modu-13e420.css",
-          "http://localhost:9091/css/app.css"
+          "/static/css/app.75a380e414cfcc8004f7.css"
         ]
       }
     },
     "app2": {
       "assets": {
         "js": [
-          "http://localhost:9091/js/runtime.js",
-          "http://localhost:9091/js/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_0_0_0_0_port_-0bf9f2.js",
-          "http://localhost:9091/js/app2.js"
+          "/static/js/runtime.dd020376.js",
+          "/static/js/app2.e326932e.js"
         ]
       }
     }
   },
-  "js/vendors-node_modules_alpinejs_dist_module_esm_js-node_modules_htmx_org_dist_htmx_js-node_modu-13e420.js": "http://localhost:9091/js/vendors-node_modules_alpinejs_dist_module_esm_js-node_modules_htmx_org_dist_htmx_js-node_modu-13e420.js",
-  "js/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_0_0_0_0_port_-0bf9f2.js": "http://localhost:9091/js/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_0_0_0_0_port_-0bf9f2.js",
-  "runtime.js": "http://localhost:9091/js/runtime.js",
-  "vendors/.gitkeep": "http://localhost:9091/vendors/.gitkeep",
-  "vendors/images/.gitkeep": "http://localhost:9091/vendors/images/.gitkeep",
-  "vendors/images/about-banner.jpg": "http://localhost:9091/vendors/images/about-banner.jpg",
-  "vendors/images/bulletin.jpg": "http://localhost:9091/vendors/images/bulletin.jpg",
-  "vendors/images/contact-bg.webp": "http://localhost:9091/vendors/images/contact-bg.webp",
-  "vendors/images/default-banner.jpg": "http://localhost:9091/vendors/images/default-banner.jpg",
-  "vendors/images/exhibiton.jpg": "http://localhost:9091/vendors/images/exhibiton.jpg",
-  "vendors/images/funding.png": "http://localhost:9091/vendors/images/funding.png",
-  "vendors/images/logo.jpeg": "http://localhost:9091/vendors/images/logo.jpeg",
-  "vendors/images/map.png": "http://localhost:9091/vendors/images/map.png",
-  "vendors/images/sample.jpg": "http://localhost:9091/vendors/images/sample.jpg",
-  "vendors/images/serv1.png": "http://localhost:9091/vendors/images/serv1.png",
-  "vendors/images/serv2.webp": "http://localhost:9091/vendors/images/serv2.webp",
-  "vendors/images/serv3.png": "http://localhost:9091/vendors/images/serv3.png",
-  "vendors/images/team.JPG": "http://localhost:9091/vendors/images/team.JPG",
-  "vendors/images/webpack.png": "http://localhost:9091/vendors/images/webpack.png"
+  "js/259.205647a0.js": "/static/js/259.205647a0.js",
+  "js/259.205647a0.js.map": "/static/js/259.205647a0.js.map",
+  "js/app.c26d0606.js.map": "/static/js/app.c26d0606.js.map",
+  "js/app2.e326932e.js.map": "/static/js/app2.e326932e.js.map",
+  "js/runtime.dd020376.js.map": "/static/js/runtime.dd020376.js.map",
+  "runtime.js": "/static/js/runtime.dd020376.js",
+  "vendors/.gitkeep": "/static/vendors/.gitkeep",
+  "vendors/images/.gitkeep": "/static/vendors/images/.gitkeep",
+  "vendors/images/about-banner.jpg": "/static/vendors/images/about-banner.jpg",
+  "vendors/images/bulletin.jpg": "/static/vendors/images/bulletin.jpg",
+  "vendors/images/contact-bg.webp": "/static/vendors/images/contact-bg.webp",
+  "vendors/images/default-banner.jpg": "/static/vendors/images/default-banner.jpg",
+  "vendors/images/exhibiton.jpg": "/static/vendors/images/exhibiton.jpg",
+  "vendors/images/funding.png": "/static/vendors/images/funding.png",
+  "vendors/images/logo.jpeg": "/static/vendors/images/logo.jpeg",
+  "vendors/images/map.png": "/static/vendors/images/map.png",
+  "vendors/images/sample.jpg": "/static/vendors/images/sample.jpg",
+  "vendors/images/serv1.png": "/static/vendors/images/serv1.png",
+  "vendors/images/serv2.webp": "/static/vendors/images/serv2.webp",
+  "vendors/images/serv3.png": "/static/vendors/images/serv3.png",
+  "vendors/images/team.JPG": "/static/vendors/images/team.JPG",
+  "vendors/images/webpack.png": "/static/vendors/images/webpack.png"
 }
