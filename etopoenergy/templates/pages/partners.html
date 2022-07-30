@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}
+{% trans "Our Partners" %} {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+<section class="w-screen h-40 flex items-center justify-center" style="background-image:url({% static 'vendors/images/default-banner.jpg' %}); background-size:cover">
+  <div class="w-full h-full bg-primary/40 flex items-center justify-between px-3 md:px-24 text-white">
+    <h1 class="text-2xl font-bold text-white">{% trans "Our Partners" %}</h1>
+    <a href="{% url 'contact' %}" class="block flex-col space-y-1 text-center">
+      <p>{% trans "For more enquiry" %}</p>
+      <button class="bg-primary py-2 px-4 text-white hover:scale-1-5 duration-300">{% trans "Enquire" %}</button>
+    </a>
+  </div>
+</section>
+
+<section class="w-screen py-3 flex items-center px-3 md:justify-center overflow-auto divide-x-2 space-x-2">
+  <a href="{% url 'about' %}" class="block hover:font-black text-sm duration-300 font-semibold">{% trans "About Etopoenergy" %}</a>
+  <a href="{% url 'history' %}" class="pl-2 block hover:font-black font-semibold text-sm duration-300">{% trans "Etopoenergy History" %}</a>
+  <a href="{% url 'directors' %}" class="pl-2 block hover:font-black font-semibold text-sm duration-300">{% trans "Etopoenergy Directors" %}</a>
+  <a href="{% url 'qhse' %}" class="pl-2 block hover:font-black font-semibold text-sm duration-300">{% trans "Etopoenergy QHSE" %}</a>
+  <a href="{% url 'partners' %}" class="pl-2 block hover:font-black font-black text-primary text-sm duration-300">{% trans "Etopoenergy Partners" %}</a>
+  <a href="{% url 'accreditation' %}" class="pl-2 block hover:font-black font-semibold text-sm duration-300">{% trans "Etopoenergy Accreditations" %}</a>
+</section>
+
+<section class="w-screen py-6 px-3 md:px-24 font-normal space-y-4">
+  <div class="w-full bg-light text-dark p-4">
+    {% blocktrans %}
+    ETOPO ENERGY PLC is backed by it's relationship with some of the world’s leading suppliers and manufacturers. Many of them have appointed us as exclusive representatives for a particular region.
+    {% endblocktrans %}
+  </div>
+  {% if partnership %}
+  <div class="w-full grid grid-cols-2 md:grid-cols-5">
+    {% for d in partnership %}
+    <a href="{{d.website}}" class="space-y-2 flex w-full h-40 items-center justify-center">
+      <img src="{{d.image.url}}" alt="{{d.title}} logo image" class="w-full object-contain">
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="w-full bg-light p-4 text-xs font-normal">
+    {% trans "Admin Should Add these Accreditations from the backend" %}
+  </div>
+  {% endif %}
+
+</section>
+{% endblock content %}

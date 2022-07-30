@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=etopoenergy
+POSTGRES_USER=WvZqplwyRUIDicpDteGsDFEhTsWOtXsf
+POSTGRES_PASSWORD=LOj9mnaxDvKY49jD0sdHqDRhWew0CoU2fzCssBQGQgBggQHmy3vGQAvVNbpJIaqI

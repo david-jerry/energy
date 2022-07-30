@@ -1,0 +1,245 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}
+{{object.title}} {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+<section class="w-screen h-40 flex items-center justify-center" style="background-image:url({% static 'vendors/images/default-banner.jpg' %}); background-size:cover">
+  <div class="w-full h-full bg-primary/40 flex items-center justify-between px-3 md:px-24 text-white">
+    <h1 class="text-2xl font-bold text-white">{{object.title}}</h1>
+    <a href="{% url 'contact' %}" class="block flex-col space-y-1 text-center">
+      <p>{% trans "For more enquiry" %}</p>
+      <button class="bg-primary py-2 px-4 text-white hover:scale-1-5 duration-300">{% trans "Enquire" %}</button>
+    </a>
+  </div>
+</section>
+<section class="w-screen py-3 flex items-center justify-center overflow-auto divide-x-2 space-x-2">
+  <a href="{% url 'news:list' %}" class="block hover:font-black font-semibold text-sm duration-300">{% trans "News" %}</a>
+  <a href="{% url 'news:cases' %}" class="pl-2 block hover:font-black font-semibold text-sm duration-300">{% trans "Case Study" %}</a>
+</section>
+
+<section class="w-screen px-3 md:px-24 py-6">
+  <div class="flex items-end justify-between">
+    <h4 class="text-2xl font-bold">{% trans "Latest News" %}</h4>
+    <a href="{% url 'news:list' %}" class="text-xs font-semibold hover:font-black duration-300 underline-offset-1 underline">{% trans "View All News" %}</a>
+  </div>
+  <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
+    {% for p in news %}
+    <div class="space-y-4 py-5 px-3 hover:shadow-xl duration-300 cursor-pointer">
+      <a href="{{p.get_absolute_url}}" class="block w-full md:h-52 h-40 object-contain group border-2 border-primary overflow-hidden">
+        <img src="{{p.image.url}}" alt="{{p.title|title}}" class="group-hover:scale-105 duration-300 w-full h-full object-cover">
+      </a>
+      <!-- meta tags -->
+      <div class="flex items-center space-x-4">
+        <span class="text-xs font-semibold flex items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p class="block">{{p.published|date:"d M Y"}}</p>
+        </span>
+        <a href="{{p.category.get_absolute_url}}" class="hover:text-black duration-300 text-xs font-semibold flex items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+          </svg>
+          <p class="block">{{p.category.title|title}}</p>
+        </a>
+      </div>
+
+      <!-- title -->
+      <a href="{{p.get_absolute_url}}" class="block text-2xl font-bold line-clamp-2">{{p.title|title}}</a>
+
+      <!-- content -->
+      <div class="line-clamp-4 prose-img:object-cover prose-img:rounded-md prose-xs prose-headings:text-base prose-p:font-normal">
+        {{p.content|safe|truncatewords:40}}
+      </div>
+    </div>
+    {% empty %}
+    <div class="space-y-4 py-5 px-3 hover:shadow-xl duration-300 cursor-pointer">
+      <div class="w-full md:h-52 h-40 object-contain overflow-hidden group border-2 border-dark/30">
+        <img src="{% static 'vendors/images/map.png' %}" alt="Post 1" class="group-hover:scale-105 duration-300 w-full object-contain">
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="text-xs font-semibold flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p class="block">12<small>th</small> July 2022</p>
+        </span>
+        <span class="text-xs font-semibold flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+          </svg>
+          <p class="block">Marine & Subsea</p>
+        </span>
+      </div>
+
+      <!-- title -->
+      <h4 class="text-2xl font-bold line-clamp-2">{% trans "News Title" %}</h4>
+
+      <!-- content -->
+      <p class="line-clamp-4 font-normal prose prose:text-dark text-xs prose-p:font-normal prose:font-raleway">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+    <div class="space-y-4 py-5 px-3 hover:shadow-xl duration-300 cursor-pointer">
+      <div class="w-full md:h-52  h-40 object-contain overflow-hidden group border-2 border-dark/30">
+        <img src="{% static 'vendors/images/map.png' %}" alt="Post 1" class="group-hover:scale-105 duration-300 w-full object-contain">
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="text-xs font-semibold flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p class="block">12<small>th</small> July 2022</p>
+        </span>
+        <span class="text-xs font-semibold flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+          </svg>
+          <p class="block">Marine & Subsea</p>
+        </span>
+      </div>
+
+      <!-- title -->
+      <h4 class="text-2xl font-bold line-clamp-2">{% trans "News Title" %}</h4>
+
+      <!-- content -->
+      <p class="line-clamp-4 font-normal prose prose:text-dark text-xs prose-p:font-normal prose:font-raleway">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+    <div class="space-y-4 py-5 px-3 hover:shadow-xl duration-300 cursor-pointer">
+      <div class="w-full md:h-52  h-40 object-contain overflow-hidden group border-2 border-dark/30">
+        <img src="{% static 'vendors/images/map.png' %}" alt="Post 1" class="group-hover:scale-105 duration-300 w-full object-contain">
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="text-xs font-semibold flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p class="block">12<small>th</small> July 2022</p>
+        </span>
+        <span class="text-xs font-semibold flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+          </svg>
+          <p class="block">Marine & Subsea</p>
+        </span>
+      </div>
+
+      <!-- title -->
+      <h4 class="text-2xl font-bold line-clamp-2">{% trans "News Title" %}</h4>
+
+      <!-- content -->
+      <p class="line-clamp-4 font-normal prose prose:text-dark text-xs prose-p:font-normal prose:font-raleway">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+
+<section class="w-screen px-3 md:px-24 py-6 bg-light space-y-5">
+  <div class="flex items-end justify-between">
+    <h4 class="text-2xl font-bold">{% trans "Case Studies" %}</h4>
+    <a href="{% url 'news:cases' %}" class="text-xs font-semibold hover:font-black duration-300 underline-offset-1 underline">{% trans "View All Cases" %}</a>
+  </div>
+  <div class="flex">
+    <div class="swiper caseSlider w-full h-full">
+      <div class="swiper-wrapper w-full h-full flex space-x-6">
+        {% for c in cases %}
+        <div class="swiper-slide flex items-start bg-white text-dark">
+          <div class="h-40 aspect-[1/1] overflow-hidden">
+            <img src="{{c.image.url}}" alt="{{c.title|title}}" class="object-cover">
+          </div>
+          <div class="flex flex-col space-y-3 p-4 h-full w-full">
+            <span class="text-xs font-semibold flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+              </svg>
+              <p class="block">{{c.category.title|title}}</p>
+            </span>
+            <h1 class="text-2xl md:text-3xl line-clamp-3 text-dark font-bold">{{c.title}}</h1>
+          </div>
+        </div>
+        {% empty %}
+        <div class="swiper-slide flex items-start bg-white text-dark">
+          <div class="h-40 aspect-[1/1] overflow-hidden">
+            <img src="{% static 'vendors/images/serv3.png' %}" alt="case 1" class="object-cover h-full w-full">
+          </div>
+          <div class="flex flex-col space-y-3 p-4 h-full w-full">
+            <span class="text-xs font-semibold flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+              </svg>
+              <p class="block text-xs">Autonomous Survey Bessels</p>
+            </span>
+            <h1 class="text-base md:text-xl line-clamp-3 text-dark font-bold">{% trans "Case Title 1" %}</h1>
+          </div>
+        </div>
+        <div class="swiper-slide flex items-start bg-white text-dark">
+          <div class="h-40 aspect-[1/1] overflow-hidden">
+            <img src="{% static 'vendors/images/serv1.png' %}" alt="case 1" class="object-cover h-full w-full">
+          </div>
+          <div class="flex flex-col space-y-3 p-4 h-full w-full">
+            <span class="text-xs font-semibold flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+              </svg>
+              <p class="block">Marine & Subsea</p>
+            </span>
+            <h1 class="text-base md:text-xl line-clamp-3 text-dark font-bold">{% trans "Case Title 1" %}</h1>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+
+
+{% block inline_javascript %}
+<script>
+  var providerswiper = new Swiper(".mySwiper", {
+    autoplay: {
+      delay: 4000,
+    },
+    slidesPerView: 1,
+    spaceBetween: 0,
+    // Responsive breakpoints
+    loop: true,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+
+  var caseslider = new Swiper(".caseSlider", {
+    autoplay: {
+      delay: 4000,
+    },
+    // Responsive breakpoints
+    breakpoints: {
+      // when window width is >= 640px
+      380: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      // when window width is >= 768px
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+      },
+    },
+    loop: true,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
+{% endblock inline_javascript %}

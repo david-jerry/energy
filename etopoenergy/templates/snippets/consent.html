@@ -1,0 +1,8 @@
+{% load i18n %}
+
+{% if not consent %}
+<section id="consent" class="z-30 space-x-4 text-xs font-normal w-screen flex items-center fixed bottom-0 left-0 py-3 px-3 md:px-24 bg-light text-dark">
+  <a class="block" href="">{% trans "We use cookies to ensure that we give you the best experience on our website. By clicking Accept, you consent to store on your device all technologies described in our Cookie Policy. " %}</a>
+  <button hx-post="{% url 'consent' %}" hx-target="#consent" class="py-3 px-6 rounded-md bg-variant text-dark font-semibold hover:text-black duration-300">{% trans "ACCEPT" %}</button>
+</section>
+{% endif %}

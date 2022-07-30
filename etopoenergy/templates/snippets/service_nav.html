@@ -1,0 +1,5 @@
+{% for service in services %}
+<a href="{{service.get_absolute_url}}" class="hover:font-black md:w-32 p-2 hover:sclae-105 duration-300 block md:flex-none">
+  {{service.title|title}}
+</a>
+{% endfor %}

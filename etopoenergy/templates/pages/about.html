@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}
+About Us {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+<section class="w-screen h-40 flex items-center justify-center" style="background-image:url({% static 'vendors/images/default-banner.jpg' %}); background-size:cover">
+  <div class="w-full h-full bg-primary/40 flex items-center justify-between px-3 md:px-24 text-white">
+    <h1 class="text-2xl font-bold text-white">About</h1>
+    <a href="{% url 'contact' %}" class="block flex-col space-y-1 text-center">
+      <p>{% trans "For more enquiry" %}</p>
+      <button class="bg-primary py-2 px-4 text-white hover:scale-1-5 duration-300">{% trans "Enquire" %}</button>
+    </a>
+  </div>
+</section>
+
+<section class="w-screen py-3 flex px-3 items-center md:justify-center overflow-auto divide-x-2 space-x-2">
+  <a href="{% url 'about' %}" class="block hover:font-black text-primary text-sm duration-300 font-black">{% trans "About Etopoenergy" %}</a>
+  <a href="{% url 'history' %}" class="pl-2 block hover:font-black font-semibold text-sm duration-300">{% trans "Etopoenergy History" %}</a>
+  <a href="{% url 'directors' %}" class="pl-2 block hover:font-black font-semibold text-sm duration-300">{% trans "Etopoenergy Directors" %}</a>
+  <a href="{% url 'qhse' %}" class="pl-2 block hover:font-black font-semibold text-sm duration-300">{% trans "Etopoenergy QHSE" %}</a>
+  <a href="{% url 'partners' %}" class="pl-2 block hover:font-black font-semibold text-sm duration-300">{% trans "Etopoenergy Partners" %}</a>
+  <a href="{% url 'accreditation' %}" class="pl-2 block hover:font-black font-semibold text-sm duration-300">{% trans "Etopoenergy Accreditations" %}</a>
+</section>
+
+<section class="space-y-4 w-screen py-6 px-3 md:px-24 font-normal">
+  <div class="w-full bg-light text-dark p-4">
+    {% blocktrans %}
+    ETOPO ENERGY PLC is a sister company of Etopo Control Services Nigeria Limited. We are specialists in Pipeline Laying, maintenance and Leak repairs, HWU, DD/LWD/MWD services, Slicline/Wireline services, Filtration services, PSV (DP2) civil engineering services etc
+    {% endblocktrans %}
+  </div>
+  <img src="{% static 'vendors/images/about-banner.jpg' %}" alt="about banner" class="w-full h-40 object-cover">
+  <div class="w-full space-y-1 bg-light p-4">
+    <h4 class="text-xl font-bold">{% trans "Why Work With Us" %}</h4>
+    <p>
+      {% blocktrans %}
+      With our years of expertise in offering top-notch marine services, we have been examplary to our contemporaries and thorough our understanding of the diversity and dynamics of project execution and outsourcing across different regions of the world, We ensure our clients needs are being tended to <strong class="font-bold text-sm">EXCELLENTLY</strong>.
+      {% endblocktrans %}
+    </p>
+  </div>
+  <div class="w-full space-y-1 bg-light p-4">
+    <h4 class="text-xl space-y-1 font-bold">
+      {% trans "Our Mission" %}
+    </h4>
+    <p>
+      {% blocktrans %}
+      Our mission is to provide our clients with professional service, technically qualified crew and best quality equipment both onshore and offshore.
+      {% endblocktrans %}
+    </p>
+  </div>
+</section>
+
+{% endblock content %}
+

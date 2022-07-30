@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}
+{{object.title|title}} {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+<section class="w-screen h-40 flex items-center justify-center" style="background-image:url({{object.image.url}}); background-size:cover">
+  <div class="w-full h-full bg-primary/40 flex items-center justify-between px-3 md:px-24 text-white">
+    <h1 class="text-2xl font-bold text-white">{{object.title|title}}</h1>
+    <a href="{% url 'contact' %}" class="block flex-col space-y-1 text-center">
+      <p>{% trans "For more enquiry" %}</p>
+      <button class="bg-primary py-2 px-4 text-white hover:scale-1-5 duration-300">{% trans "Enquire" %}</button>
+    </a>
+  </div>
+</section>
+<section class="w-screen px-3 md:px-24 py-6 prose-xs prose-headings:text-base prose-p:font-normal">
+  {{object.details|safe}}
+</section>
+{% endblock content %}

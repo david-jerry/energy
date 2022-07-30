@@ -1,0 +1,91 @@
+{% load static i18n webpack_loader %}
+
+<!DOCTYPE html>
+
+{% get_current_language as LANGUAGE_CODE %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
+{% get_language_info_list for LANGUAGES as languages %}
+
+<html lang="{{ LANGUAGE_CODE }}">
+  <head>
+    <title>{% block title %} | Etopo Energy{% endblock title %}</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="Classification" content="Business">
+    <meta name="coverage" content="Worldwide">
+    <meta name="distribution" content="Global">
+
+    <meta name="description" content="Marine services, Hydraulic Work Over, Civil Engineering Slickline/Wireline , Pipeline installation and Leak repairs etc">
+    <meta name="author" content="Jeremiah David">
+
+    <link rel="shortcut icon" href="{% static 'images/favicons/favicon.ico' %}">
+
+    {% block css %}
+    {% stylesheet_pack 'app' %}
+    {% endblock %}
+    <!-- Le javascript
+    ================================================== -->
+    {# Placed at the top of the document so pages load faster with defer #}
+    {% block javascript %}
+    <script src="https://cdn.tiny.cloud/1/{{settings.TINY_API}}/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script type="application/javascript">
+        tinymce.init({
+          selector: 'textarea',
+          plugins: 'image autolink lists media table paste',
+          toolbar: 'undo redo | styles | bold italic | addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
+          toolbar_mode: 'floating',
+          tinycomments_mode: 'embedded',
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js" defer></script>
+    {% endblock javascript %}
+
+  </head>
+
+  <body @scroll.window="showBar = (window.pageYOffset > 10) ? true : false" class="w-screen block" x-data="{ open : false, showBar : false, notice : false}" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+
+
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    {% block header %}
+    {% include "snippets/nav.html" %}
+    {% endblock header %}
+
+    {% block content %}
+
+    {% endblock content %}
+
+    {% include "snippets/consent.html" %}
+
+    {% block footer %}
+    {% include "snippets/footer.html" %}
+    {% endblock footer %}
+
+    {% block modal %}{% endblock modal %}
+    {% javascript_pack 'app' %}
+    <script src="https://unpkg.com/hyperscript.org@0.9.5"></script>
+
+    {% block inline_javascript %}
+    {% comment %}
+    Script tags with only code, no src (defer by default). To run
+    with a "defer" so that you run inline code:
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {/* Run whatever you want */});
+    </script>
+    {% endcomment %}
+    {% endblock inline_javascript %}
+  </body>
+</html>

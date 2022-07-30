@@ -1,0 +1,58 @@
+{% load static i18n %}
+
+<footer class="w-screen bg-primary text-white">
+  <div class="w-full grid grid-cols-2 md:grid-cols-6 relative px-3 md:px-24 py-6 gap-4">
+    <div class="space-y-3">
+      <h4 class="font-bold text-sm">{% trans "Etopo Services" %}</h4>
+      {% for s in services %}
+      <a href="{{s.get_absolute_url}}" class="block text-xs font-normal">{{s.title|title}}</a>
+      {% endfor %}
+    </div>
+    <div class="space-y-3">
+      <h4 class="font-bold text-sm">{% trans "Etopo Energy" %}</h4>
+      <a href="{% url 'about' %}" class="block text-xs font-normal">{% trans "About" %}</a>
+      <a href="{% url 'history' %}" class="block text-xs font-normal">{% trans "History" %}</a>
+      <a href="{% url 'directors' %}" class="block text-xs font-normal">{% trans "Directors" %}</a>
+      <a href="{% url 'partners' %}" class="block text-xs font-normal">{% trans "Our Partners" %}</a>
+      <a href="{% url 'accreditation' %}" class="block text-xs font-normal">{% trans "Our Accreditations" %}</a>
+    </div>
+    <div class="space-y-3">
+      <h4 class="font-bold text-sm">{% trans "Important Links" %}</h4>
+      <a href="{% url 'coming' %}" class="block text-xs font-normal">{% trans "Career" %}</a>
+      <a href="{% url 'coming' %}" class="block text-xs font-normal">{% trans "Training" %}</a>
+      <a href="{% url 'curruption' %}" class="block text-xs font-normal">{% trans "Anti-Curruption & Bribery Policy" %}</a>
+      <a href="{% url 'conduct' %}" class="block text-xs font-normal">{% trans "Code of Conduct" %}</a>
+      <a href="{% url 'qhse' %}" class="block text-xs font-normal">{% trans "QHSE Policy Statement" %}</a>
+      <a href="{% url 'compliance' %}" class="block text-xs font-normal">{% trans "Trade Compliance Policy Statement" %}</a>
+      <a href="{% url 'privacy' %}" class="block text-xs font-normal">{% trans "Privacy Policy Statement" %}</a>
+      <a href="{% url 'coming' %}" class="block text-xs font-normal">{% trans "Vendor Code of Conduct" %}</a>
+    </div>
+    <div class="space-y-3">
+      <h4 class="font-bold text-sm">{% trans "Get in Touch" %}</h4>
+      <a href="{% url 'contact' %}" class="block text-xs font-normal">{% trans "Contact" %}</a>
+      <a href="{% url 'contact' %}" class="block text-xs font-normal">{% trans "Service Follow-Up" %}</a>
+      <a href="{% url 'news:feedback' %}" class="block text-xs font-normal">{% trans "Client Feedback Form" %}</a>
+    </div>
+    <div class="space-y-3">
+      <h4 class="font-bold text-sm">{% trans "Media Center" %}</h4>
+      <a href="{% url 'news:list' %}" class="block text-xs font-normal">{% trans "News" %}</a>
+      <a href="{% url 'news:cases' %}" class="block text-xs font-normal">{% trans "Case Studies" %}</a>
+    </div>
+    <div class="space-y-3">
+      <h4 class="font-bold text-sm">{% trans "Social Connect" %}</h4>
+      <a href="{% url 'about' %}" class="block text-xs font-normal">{% trans "Follow on Facebook" %}</a>
+      <a href="{% url 'about' %}" class="block text-xs font-normal">{% trans "Follow on Linkedin" %}</a>
+      <a href="{% url 'about' %}" class="block text-xs font-normal">{% trans "Follow on Twitter" %}</a>
+    </div>
+  </div>
+  <div class="w-full px-3 md:px-24 py-6 bg-white text-dark text-normal md:flex md:items-center md:justify-between">
+    <div class="md:divide-x-2 md:space-x-2 md:divide-y-0 divide-y-2 md:flex md:items-center">
+      <a href="{% url 'sitemap' %}" class="block text-xs font-normal hover:font-black duration-300">Sitemap</a>
+      <a href="{% url 'terms' %}" class="block md:pl-2 text-xs font-normal hover:font-black duration-300">{% trans "Terms & Conditions" %}</a>
+      <a href="{% url 'privacy' %}" class="block md:pl-2 text-xs font-normal hover:font-black duration-300">{% trans "Privacy Policy" %}</a>
+      <a href="{% url 'cookies' %}" class="block md:pl-2 text-xs font-normal hover:font-black duration-300">{% trans "Cookies Policy" %}</a>
+      <a href="https://darkcodr.codes" class="block md:pl-2 text-xs font-normal hover:font-black duration-300">{% trans "Designed By Darkcodr Codes" %}</a>
+    </div>
+  </div>
+</footer>
+

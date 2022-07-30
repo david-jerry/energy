@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}
+Accreditations {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+<section class="w-screen h-40 flex items-center justify-center" style="background-image:url({% static 'vendors/images/default-banner.jpg' %}); background-size:cover">
+  <div class="w-full h-full bg-primary/40 flex items-center justify-between px-3 md:px-24 text-white">
+    <h1 class="text-2xl font-bold text-white">Our Accreditations</h1>
+    <a href="{% url 'contact' %}" class="block flex-col space-y-1 text-center">
+      <p>{% trans "For more enquiry" %}</p>
+      <button class="bg-primary py-2 px-4 text-white hover:scale-1-5 duration-300">{% trans "Enquire" %}</button>
+    </a>
+  </div>
+</section>
+
+<section class="w-screen py-3 px-3 flex items-center md:justify-center overflow-auto divide-x-2 space-x-2">
+  <a href="{% url 'contact' %}" class="block hover:font-black text-sm duration-300 font-semibold">{% trans "Contact" %}</a>
+  <a href="{% url 'news:feedback' %}" class="pl-2 block hover:font-black font-black text-primary text-sm duration-300">{% trans "Client Feedback" %}</a>
+</section>
+
+<section class="w-screen flex flex-col justify-center py-6 px-3 md:px-24 space-y-4">
+  <h4 class="text-base font-bold text-primary">{% trans "Please Leave a Review" %}</h4>
+  <div class="md:flex md:items-start md:space-x-4 md:space-y-0 space-y-4">
+    <div class="md:w-2/3 w-full space-y-4" id="form">
+      <div class="w-full space-y-1">
+        <label for="#service" class="text-xs font-semibold">{% trans "Subject or Service" %}</label>
+        <select name="service" id="service" class="w-full py-2 border-dark/30 text-dark/30 placeholder:text-dark/30 text-xs">
+          <option value="">Select Service</option>
+          {% for s in services %}
+          <option value="{{s.id}}">{{s.title|title}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="w-full md:flex md:items-center md:space-x-4 md:space-y-0 space-y-4">
+        <div class="md:w-1/2 w-full">
+          <input type="text" placeholder="company" class="w-full py-2 border-dark/30 placeholder:text-dark/30 text-xs">
+        </div>
+        <div class="md:w-1/2 w-full">
+          <input type="email" placeholder="email" class="w-full py-2 border-dark/30 placeholder:text-dark/30 text-xs">
+        </div>
+      </div>
+      <textarea name="message" id="message" cols="100" rows="30" class="h-52"></textarea>
+      <button class="py-2 px-5 rounded-xl bg-primary text-white">ADD REVIEW</button>
+    </div>
+    <div class="md:w-1/3 w-full space-y-4">
+      <h4 class="text-base font-bold text-primary">{% trans "Become a partner" %}</h4>
+      <p class="text-dark/40 text-xs font-normal">
+        {% blocktrans %}
+        We offer tools to develop your expertise and improve your market knowledge to help you to accelerate growth. Our focus is on helping you to build long-term, valued relationship.
+        <br>
+        <br>
+        Our partners can benefit from a wide range of products and services.
+        {% endblocktrans %}
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock content %}

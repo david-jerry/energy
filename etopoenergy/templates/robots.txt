@@ -1,0 +1,26 @@
+Sitemap: http://www.etopoenergy.com/sitemap.xml
+
+User-agent: *
+Disallow: /admin/*
+Disallow: /users/*
+Disallow: /portal/*
+Disallow: /jet/*
+Disallow: /jets/*
+Disallow: /tinymce/*
+Disallow: /*.pdf$
+Disallow: /*.zip$
+Disallow: /*.doc$
+Disallow: /*.docx$
+Disallow: /*.xls$
+Disallow: /*.xlsx$
+Disallow: /*.ppt$
+Disallow: /*.pptx$
+Disallow: /*.odt$
+Disallow: /*.ods$
+Disallow: /*.odp$
+Disallow: /*.odg$
+Disallow: /*.odc$
+Disallow: /*.odf$
+Disallow: /*.js$
+Disallow: /*.css$
+

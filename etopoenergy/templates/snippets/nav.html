@@ -1,0 +1,81 @@
+{% load static i18n %}
+{% include "snippets/notice.html" %}
+<header :class="{'h-screen md:h-auto flex-none':open}" class="shadow-md w-screen bg-white duration-300 z-50">
+  <div :class="{ 'fixed top-0 left-0 z-50 shadow-md' : showBar, 'relative z-50' : !showBar }" class="bg-white w-screen text-xs px-3 md:px-24 py-3 flex flex-row items-center justify-between">
+    <a href="{% url 'home' %}" class="flex">
+      <img src="{% static 'vendors/images/logo.jpeg' %}" class="cursor-pointer block h-16 flex-none" alt="Etopo Energy Logo">
+    </a>
+    <nav class="hidden md:flex items-center text-primary gap-4">
+      <a href="{% url 'contact' %}" class="hover:font-black hover:sclae-105 duration-300 block">
+        {% trans "Contact" %}
+      </a>
+      <a href="{% url 'news:list' %}" class="hover:font-black hover:sclae-105 duration-300 block">
+        {% trans "Media Center" %}
+      </a>
+      <a href="tel://+2348131505272" class="font-bold flex items-center space-x-1 bg-variant hover:font-black text-dark px-6 hover:scale-105 py-2 rounded-full hover:shadow-md duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+        </svg>
+        <p>{% trans "Call Us" %}</p>
+      </a>
+      <a href="{% url 'contact' %}" class="font-bold bg-primary hover:font-black text-white px-6 hover:scale-105 py-2 rounded-full hover:shadow-md duration-300">
+        {% trans "Get Quote" %}
+      </a>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 cursor-pointer hover:scale-105 block duration-300" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+      </svg>
+    </nav>
+
+    <div class="flex md:hidden items-center text-primary gap-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 cursor-pointer hover:scale-105 block duration-300" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+      </svg>
+      <button @click="open = !open" :class="{ 'hidden' : open }" class="flex items-center space-x-1 uppercase group duration-300">
+        <span class="block">{% trans "menu" %}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:hidden h-6 w-6 block duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:flex hidden duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <button @click="open = !open" :class="{ 'flex' : open, 'hidden' : !open }" class="items-center space-x-1 uppercase duration-300">
+        <span class="block">{% trans "close" %}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 block" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="hidden md:flex shadow-md py-2 px-3 md:px-24 w-screen items-center overflow-x-auto scrollbar-thin bg-primary text-white text-xs">
+    <a href="{% url 'about' %}" class="block w-40 p-2 hover:font-black hover:scale-105 duration-300 flex-none">About Etopo Energy</a>
+    {% include "snippets/service_nav.html" %}
+  </div>
+</header>
+<nav :class="{'flex z-40' : open, 'hidden z-0' : !open }" class="z-40 md:hidden flex-col w-screen space-y-3 bg-primary/80 text-white h-screen fixed top-0 left-0 pb-16 overflow-y-scroll">
+  <!-- <div class="w-full space-y-3"> -->
+    <a :class="{'pt-24':notice, 'pt-48':!notice}" href="{% url 'about' %}" class="hover:font-black px-2 pb-2 hover:sclae-105 duration-300 block">
+      {% trans "About Us" %}
+    </a>
+    {% include "snippets/service_nav.html" %}
+    <a href="{% url 'contact' %}" class="hover:font-black p-2 hover:sclae-105 duration-300 block">
+      {% trans "Contact" %}
+    </a>
+    <a href="{% url 'news:list' %}" class="hover:font-black hover:sclae-105 p-2 duration-300 block">
+      {% trans "Media Center" %}
+    </a>
+  <!-- </div> -->
+
+
+</nav>
+<div :class="{'hidden':!open, 'flex':open}" class="w-screen items-center space-x-3 justify-center bg-dark py-3 fixed bottom-0 left-0 z-50">
+  <a href="" class="font-bold flex items-center space-x-1 bg-variant hover:font-black text-dark px-6 hover:scale-105 py-2 rounded-full hover:shadow-md duration-300">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+    </svg>
+    <p>{% trans "Call Us" %}</p>
+  </a>
+  <a href="" class="font-bold bg-white hover:font-black text-primary px-6 hover:scale-105 py-2 rounded-full hover:shadow-md duration-300">
+    {% trans "Get Quote" %}
+  </a>
+</div>
