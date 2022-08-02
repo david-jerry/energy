@@ -4,11 +4,13 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
 from etopoenergy.users.forms import UserAdminChangeForm, UserAdminCreationForm
-from .models import Kin
+from .models import Kin, JobRequirement, JobRole
 
 User = get_user_model()
 
 admin.site.register(Kin)
+admin.site.register(JobRequirement)
+admin.site.register(JobRole)
 
 @admin.register(User)
 class UserAdmin(auth_admin.UserAdmin):
