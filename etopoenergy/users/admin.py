@@ -16,8 +16,21 @@ class UserAdmin(auth_admin.UserAdmin):
     form = UserAdminChangeForm
     add_form = UserAdminCreationForm
     fieldsets = (
-        (None, {"fields": ("username", "password")}),
-        (_("Personal info"), {"fields": ("name", "gender", "email", "phone", "dob", "address", "bvn")}),
+        (None, {"fields": ("user_type", "username", "password")}),
+        (_("Personal info"), {"fields": ("dp", "name", "gender", "email", "phone", "country", "dob", "address", "bvn")}),
+        (
+            _("Employment Status"),
+            {
+                "fields": (
+                    "status",
+                    "role",
+                    "certified",
+                    "executive",
+                    "employed",
+                    "unemployed",
+                ),
+            },
+        ),
         (
             _("Permissions"),
             {
@@ -31,9 +44,17 @@ class UserAdmin(auth_admin.UserAdmin):
                 ),
             },
         ),
+        (
+            _("Social"),
+            {
+                "fields": (
+                    "linkedin",
+                ),
+            },
+        ),
         (_("Important dates"), {"fields": ("last_login", "date_joined")}),
     )
-    list_display = ["username", "gender", "name", "email", "phone", "dob", "address", "bvn", "status", "user_type", "consent", "is_active", "is_superuser"]
+    list_display = ["username", "gender", "name", "email", "phone", "dob", "address", "bvn", "status", "user_type", "consent", "certified", "executive", "employed", "unemployed", "is_active", "is_superuser"]
     search_fields = ["name", "email", "phone", "user_type", "bvn"]
     list_filter = ["is_active", 'status', 'consent', "gender"]
-    list_editable = ["is_active", "status", "consent", "user_type"]
+    list_editable = ["is_active", "status", "consent", "user_type", "certified", "executive", "employed", "unemployed"]
