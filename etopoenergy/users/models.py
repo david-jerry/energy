@@ -110,7 +110,7 @@ class User(AbstractUser):
 
     #: First and last name do not cover name patterns around the globe
     name = CharField(_("Middle name"), blank=True, max_length=255)
-    user_type = CharField(_("Permission Type"), blank=False, max_length=255, choices=USER_TYPE, default=CLIENT)
+    user_type = CharField(_("Permission Type"), blank=True, max_length=255, choices=USER_TYPE, default=CLIENT)
     phone = CharField(unique=True, max_length=17, blank=True, help_text=_("eg: 018276475673"))
     country = ForeignKey(Country, on_delete=DO_NOTHING, default="NG", blank=True, null=True)
     gender = CharField(_("Gender"), max_length=1, choices=GENDER_CHOICE, blank=True, null=True)
@@ -120,7 +120,7 @@ class User(AbstractUser):
 
     linkedin = URLField(_("Linkedin Account"), max_length=500, blank=True)
 
-    status = CharField(_("Employment Status"), blank=False, max_length=255, choices=STATUS, default=UNEMPLOYED)
+    status = CharField(_("Employment Status"), blank=True, max_length=255, choices=STATUS, default=UNEMPLOYED)
 
     role = ForeignKey(JobRole, on_delete=CASCADE, blank=True, null=True)
 
