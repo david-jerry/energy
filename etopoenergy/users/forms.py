@@ -10,7 +10,27 @@ User = get_user_model()
 class UserAdminChangeForm(admin_forms.UserChangeForm):
     class Meta(admin_forms.UserChangeForm.Meta):
         model = User
-
+        fields = [
+                    "first_name",
+                    "name",
+                    "name",
+                    "user_type",
+                    "phone",
+                    "country",
+                    "gender",
+                    "dob",
+                    "address",
+                    "bvn",
+                    "linkedin",
+                    "status",
+                    "role",
+                    "certified",
+                    "executive",
+                    "consent",
+                    "employed",
+                    "unemployed",
+                    "dp",
+                ]
 
 class UserAdminCreationForm(admin_forms.UserCreationForm):
     """
@@ -20,9 +40,31 @@ class UserAdminCreationForm(admin_forms.UserCreationForm):
 
     class Meta(admin_forms.UserCreationForm.Meta):
         model = User
+        fields = [
+                    "first_name",
+                    "name",
+                    "name",
+                    "user_type",
+                    "phone",
+                    "country",
+                    "gender",
+                    "dob",
+                    "address",
+                    "bvn",
+                    "linkedin",
+                    "status",
+                    "role",
+                    "certified",
+                    "executive",
+                    "consent",
+                    "employed",
+                    "unemployed",
+                    "dp",
+                ]
 
         error_messages = {
-            "username": {"unique": _("This username has already been taken.")}
+            "username": {"unique": _("This username has already been taken.")},
+            "phone": {"unique": _("This phone number has already been taken.")}
         }
 
 
