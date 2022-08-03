@@ -19,7 +19,7 @@ class UserAdmin(auth_admin.UserAdmin):
     add_form = UserAdminCreationForm
     fieldsets = (
         (None, {"fields": ("user_type", "username", "password")}),
-        (_("Personal info"), {"fields": ("dp", "name", "gender", "email", "phone", "country", "dob", "address", "bvn")}),
+        (_("Personal info"), {"fields": ("first_name", "name", "last_name", "dp", "gender", "email", "phone", "country", "dob", "address", "bvn")}),
         (
             _("Employment Status"),
             {
@@ -56,7 +56,7 @@ class UserAdmin(auth_admin.UserAdmin):
         ),
         (_("Important dates"), {"fields": ("last_login", "date_joined")}),
     )
-    list_display = ["username", "gender", "name", "email", "phone", "dob", "address", "bvn", "status", "user_type", "consent", "certified", "executive", "employed", "unemployed", "is_active", "is_superuser"]
-    search_fields = ["name", "email", "phone", "user_type", "bvn"]
+    list_display = ["username", "gender", "first_name", "name", "last_name", "email", "phone", "dob", "address", "bvn", "status", "user_type", "consent", "certified", "executive", "employed", "unemployed", "is_active", "is_superuser"]
+    search_fields = ["first_name", "name", "last_name", "email", "phone", "user_type", "bvn"]
     list_filter = ["is_active", 'status', 'consent', "gender"]
-    list_editable = ["is_active", "status", "consent", "user_type", "certified", "executive", "employed", "unemployed"]
+    list_editable = ["first_name", "name", "last_name", "is_active", "status", "consent", "user_type", "certified", "executive", "employed", "unemployed"]
